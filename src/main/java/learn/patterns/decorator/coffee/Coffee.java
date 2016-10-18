@@ -1,6 +1,7 @@
 package learn.patterns.decorator.coffee;
 
-import design.patterns.decorator.Drink;
+
+import learn.patterns.decorator.Drink;
 
 /**
  * 咖啡主体超类与咖啡单品中间层

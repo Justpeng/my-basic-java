@@ -1,6 +1,6 @@
 package learn.patterns.decorator.decorator;
 
-import design.patterns.decorator.Drink;
+import learn.patterns.decorator.Drink;
 
 /**
  * 调料类-Milk继承装饰类

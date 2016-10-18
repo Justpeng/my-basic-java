@@ -1,6 +1,6 @@
 package learn.patterns.decorator.decorator;
 
-import design.patterns.decorator.Drink;
+import learn.patterns.decorator.Drink;
 
 /**
  * 装饰器对象

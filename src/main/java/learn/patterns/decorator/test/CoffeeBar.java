@@ -1,16 +1,18 @@
 package learn.patterns.decorator.test;
 
-import design.patterns.decorator.Drink;
-import design.patterns.decorator.coffee.Decaf;
-import design.patterns.decorator.decorator.Chocolate;
-import design.patterns.decorator.decorator.Milk;
-import design.patterns.decorator.decorator.Soy;
+
+import learn.patterns.decorator.Drink;
+import learn.patterns.decorator.coffee.Decaf;
+import learn.patterns.decorator.decorator.Chocolate;
+import learn.patterns.decorator.decorator.Milk;
+import learn.patterns.decorator.decorator.Soy;
 
 /**
  * Created by @Just on 2016/10/9.
  */
 public class CoffeeBar {
     public static void main(String args[]) {
+
         Drink order =  new Decaf();
 
         System.out.println("order price:"+order.cost());

@@ -27,6 +27,8 @@ public class Test {
         Constructor<JustEnum> constructor = clz.getConstructor();
         constructor.setAccessible(true);
         constructor.newInstance();
+
+        Object obj = new Object();
     }
 
 
