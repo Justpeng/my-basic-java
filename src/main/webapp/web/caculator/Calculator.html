@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Loan Calculator</title>
+    <script type="text/javascript"  src="calculator.js"></script>
+    <style type="text/css">
+        .output {
+            font-weight: bold;
+        }
+        #payment{text-decoration: underline}
+        #graph{border:solid black 1px;}
+        th,td{
+            vertical-align: top;}
+        .show{
+            border:solid blue 1px;
+        }
+        .tr-head{
+            background: gainsboro;
+        }
+        .tr-body{
+            background: burlywood;
+        }
+    </style>
+    <script>
+        function calculate(){
+            var amount = getO("amount");
+            var apr = getO("apr");
+            var years = getO("years");
+            var zipcode = getO("zipcode");
+            var payment = getO("payment");
+            var total = getO("total");
+            var totalinterest = getO("totalinterest");
+
+            //假设所有的输入都是合法的
+            //将百分比格式转换为小数格式，并从年利率转为月利率
+            //将年度赔付转为月度赔付
+            var principal = parseFloat(amount.value);
+            var interest = parseFloat(apr.value)/100/12;
+            var payments = parseFloat(years.value)*12;
+            //计算月度赔付的数据
+            var x = Math.pow(1+interest,payments);
+            var monthly = (principal*x*interest)/(x-1);
+            //isFinite 有限的数字
+            if(isFinite(monthly)){
+                payment.innerHTML = monthly.toFixed(2);
+                var totalAmount = (monthly * payments).toFixed(2);
+                total.innerHTML = totalAmount;
+                totalinterest.innerHTML = ((monthly * payments) - principal).toFixed(2);
+                save(amount.value, apr.value, years.value, zipcode.value);
+                try{
+
+                    showDetail(principal,interest,monthly,totalAmount);
+                }catch(e){}
+                chart(principal, interest, monthly, payments);
+
+            }else {
+                //计算结果不是数字或无穷大，即输入数据非法
+                payment.innerHTML="";
+                total.innerHTML="";
+                totalinterest.innerHTML = "";
+                chart();
+            }
+
+        }
+        function save(amount,apr,years,zipcode){
+            if(window.localStorage) {
+                localStorage.loan_amount=amount;
+                localStorage.loan_apr = apr;
+                localStorage.loan_years = years;
+                localStorage.loan_zipcode = zipcode;
+            }
+        }
+        window.onload = function () {
+            if(window.localStorage && localStorage.loan_amount){
+                getO("amount").value=localStorage.loan_amount;
+                getO("apr").value=localStorage.loan_apr;
+                getO("years").value=localStorage.loan_years;
+                getO("zipcode").value=localStorage.loan_zipcode;
+            }
+        }
+    </script>
+</head>
+<body>
+<table>
+    <tr><th>Enter Loan Data:</th>
+        <td></td><th>Loan Balance,Cumulative Equity,and Interest Payments</th>
+    </tr>
+    <tr>
+        <td>Amount of the loan ($):</td>
+        <td><input  type="text" id="amount" onchange="calculate();"/></td>
+        <td rowspan="8"><canvas id="graph" width="460" height="250"></canvas></td>
+    </tr>
+    <tr>
+        <td>Annual interest (%):</td>
+        <td><input type="text" id="apr" onchange="calculate()"/></td>
+    </tr>
+    <tr>
+        <td>Repayment period (years)：</td>
+        <td><input  type="text" id="years" onchange="calculate()"/></td>
+    </tr>
+    <tr>
+        <td>Zipcode(to find lenders):</td>
+        <td><input  type="text" id="zipcode" onchange="calculate()"/></td>
+    </tr>
+    <tr><th>Approximate Payments:</th>
+        <td><button onclick="calculate()">Calculator</button></td>
+    </tr>
+    <tr><td>Monthly payment: </td>
+        <td><span class="output" id="payment"></span></td>
+    </tr>
+    <tr>
+        <td>Total payment:</td>
+        <td><span class="output" id="total"></span></td>
+    </tr>
+    <tr>
+        <td>Total interest:</td>
+        <td><span class="output" id="totalinterest"></span></td>
+    </tr>
+    <tr>
+        <th>还款详情:</th>
+    </tr>
+</table >
+<table id="showDetail" style="margin-left:160px;">
+</table>
+</body>
+</html>
