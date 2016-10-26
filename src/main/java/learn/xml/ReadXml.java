@@ -28,10 +28,8 @@ public class ReadXml {
                     List<Object> aList  = e.selectNodes("@class");
                     for(Object a :aList)
                         if(a instanceof Attribute){
-                        ((Attribute) a).valueOf()
                             Attribute attribute = (Attribute) a;
                             System.out.println(attribute.getText());
-
                         }
                 }
             }

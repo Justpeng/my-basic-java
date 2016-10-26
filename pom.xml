@@ -91,8 +91,10 @@
 
 
         <hibernate-validator.version>5.1.1.final</hibernate-validator.version>
+        <!--aop代理类库-->
+        <cglib.version>3.1</cglib.version>
 
-
+        <dom4j.verson>1.6.1</dom4j.verson>
     </properties>
     <!--版本变量设置 end-->
 
@@ -334,17 +336,23 @@
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
+            <version>${dom4j.verson}</version>
         </dependency>
         <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
             <version>1.1.1</version>
         </dependency>
+
+        <!--AOP代理类库-->
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
     </dependencies>
     <!--架包依赖 end-->
-
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <resources>
@@ -427,42 +435,36 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                 </configuration>
             </plugin>
-
             <!--resources 插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven-resources-plugin.version}</version>
             </plugin>
-
             <!-- source插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source-plugin.version}</version>
             </plugin>
-
             <!-- install插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${maven-install-plugin.version}</version>
             </plugin>
-
             <!-- clean插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>${maven-clean-plugin.version}</version>
             </plugin>
-
             <!-- ant插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>${maven-antrun-plugin.version}</version>
             </plugin>
-
             <!-- dependency插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
