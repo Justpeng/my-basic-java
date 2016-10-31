@@ -94,7 +94,7 @@
         <!--aop代理类库-->
         <cglib.version>3.1</cglib.version>
 
-        <dom4j.verson>1.6.1</dom4j.verson>
+        <dom4j.version>1.6.1</dom4j.version>
     </properties>
     <!--版本变量设置 end-->
 
@@ -336,7 +336,7 @@
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>${dom4j.verson}</version>
+            <version>${dom4j.version}</version>
         </dependency>
         <dependency>
             <groupId>jaxen</groupId>

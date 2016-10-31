@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.just.module.ip.dao.IpDao">
+    <select id="selectIpList" resultType="com.just.module.ip.pojo.Ip" parameterType="map">
+        select * from ip_table
+        order by findTime desc
+        limit ${offset},${size}
+    </select>
+    <select id="getRowCount" resultType="java.lang.Integer" >
+      SELECT count(*) from ip_table
+    </select>
+</mapper>

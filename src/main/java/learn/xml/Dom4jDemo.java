@@ -3,8 +3,6 @@ package learn.xml;
 import org.dom4j.*;
 import org.dom4j.io.*;
 
-import javax.print.Doc;
-import javax.print.DocFlavor;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
