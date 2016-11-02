@@ -39,7 +39,7 @@ public class PageParam {
 
     public void setRowCount(int rowCount) {
         int totalPage = rowCount/pageSize;
-        if (rowCount % totalPage > 0) {
+        if (rowCount % totalPage >= 0) {
             totalPage +=1;
         }
         setTotalPage(totalPage);

@@ -4,19 +4,12 @@
     <!--参考文章：-->
     <!--http://blog.csdn.net/wangjunjun2008/article/details/18732019-->
     <!--http://blog.csdn.net/evankaka/article/details/50637994-->
-    
-    
     <!--======================================================-->
-    
-    
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
     <!--Windows 可以使用类似：D:/log-->
     <!--Linux 可以使用类似：/opt/tomcat/logs-->
     <property name="LOG_HOME" value="D:/log/s" />
-
     <!--======================================================-->
-
-
     <!--输出到控制台的设置-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -27,6 +20,12 @@
 
     <!-- 按照每天生成日志文件 -->
     <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--定义输出级别-->
+        <!--  <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY </onMismatch>
+        </filter>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的路径+文件名-->
             <FileNamePattern>${LOG_HOME}/logbackOutFile.log.%d{yyyy-MM-dd}.log</FileNamePattern>
@@ -67,6 +66,7 @@
     <!--======================================================-->
 
     <!--默认所有级别是 debug，使用控制台和文件两种类型都进行输出输出，如果只要使用一种控制台输出的话，则下面把FILE那一行去掉即可-->
+    <!--指定项目输出的最低级别-->
     <root level="TRACE">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />

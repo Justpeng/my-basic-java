@@ -11,6 +11,7 @@
     <th>ip信息</th>
     <thread>
         <tr>
+            <td>id</td>
             <td>ip</td>
             <td>port</td>
             <td>country</td>
@@ -20,6 +21,7 @@
         </tr>
         <c:forEach items="${pageParam.data}" var="item">
             <tr>
+                <td>${item.id}</td>
                 <td>${item.ip}</td>
                 <td>${item.port}</td>
                 <td>${item.country}</td>
@@ -37,7 +39,7 @@
         int totalPage = pageParam.getTotalPage();
         for(int i=1;i<=totalPage;i++){
             if (i == currPage) {
-                %><span><%=currPage%>></span><%
+                %><span><%=currPage%></span><%
             }else{
                 %><a href="/ip/getList?page=<%=i %>"><%=i %></a><%
             }
