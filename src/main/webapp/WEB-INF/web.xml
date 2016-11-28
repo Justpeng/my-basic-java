@@ -5,7 +5,7 @@
 
   <display-name>Spring mvc Web Application</display-name>
   <!-- <welcome-file-list>
-     <welcome-file>index.jsp</welcome-file>
+     <welcome-file>index1.jsp</welcome-file>
    </welcome-file-list>-->
   <!-- Spring 和 Mybatis的配置文件-->
   <!--业务和持久层的Spring配置文件，这些配置文件被父Spring容器所应用-->
@@ -41,7 +41,7 @@
 
   <filter>
     <filter-name>XssFilter</filter-name>
-    <filter-class>com.core.filter.XssFilter</filter-class>
+    <filter-class>com.core.just.filter.XssFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>XssFilter</filter-name>

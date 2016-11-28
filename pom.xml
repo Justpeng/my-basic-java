@@ -351,6 +351,11 @@
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations-java5</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
     <!--架包依赖 end-->
     <build>

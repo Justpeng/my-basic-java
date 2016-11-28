@@ -1,0 +1,12 @@
+/*清除padding 和 margin*/
+*{padding:0;margin:0;}
+li{list-style:none;}
+a{text-decoration: none}
+.nav{width: 100px;height:40px;background: #222;margin-top: 80px;}
+.list{width:1000px;  height: 40px;border: 1px solid red;margin:0 auto}
+.list li{float:left;}
+.list li a{color:#aaa;padding:0 30px;line-height: 30px;display:block;}
+.list li a:hover{background: #333;color:#fff;}
+.list li a.on{background: #333;color: #fff;}
+/*点击导航条，高亮显示*/
+
