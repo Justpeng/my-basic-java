@@ -105,6 +105,16 @@
     <!--访问路径eg：http://localhost:8080/druid/index.html -->
     <url-pattern>/druid/*</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SessionServlet</servlet-name>
+    <servlet-class>com.core.just.filter.SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionServlet</servlet-name>
+    <url-pattern>/count/*</url-pattern>
+  </servlet-mapping>
+
 </web-app>
 
 

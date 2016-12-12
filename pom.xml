@@ -11,8 +11,25 @@
     <description>
         使用 idea 和 maven 搭建的精简的 SpringMVC+Spring+Mybatis+Hibernate框架整合
     </description>
-    <url>http://doublesharejust.com.cn</url>
+    <url>http://jidea.net</url>
 
+
+    <repositories>
+        <repository>
+            <!-- Maven 自带的中央仓库使用的Id为central 如果其他的仓库声明也是用该Id
+            就会覆盖中央仓库的配置 -->
+            <id>mvnrepository</id>
+            <name>mvnrepository</name>
+            <url>http://www.mvnrepository.com/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     <!--集中定义公用的以来版本号 -->
     <!-- 版本变量设置 start -->
     <properties>
@@ -365,9 +382,13 @@
             <version>2.8.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>3.6.1</version>
+        </dependency>
 
-
-    </dependencies>
+</dependencies>
     <!--架包依赖 end-->
     <build>
         <finalName>${project.artifactId}</finalName>
