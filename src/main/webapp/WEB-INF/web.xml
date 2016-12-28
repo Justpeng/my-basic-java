@@ -68,6 +68,20 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+
+
+
+
+  <filter>
+    <filter-name>ContentFilter</filter-name>
+    <filter-class>com.core.just.filter.ContentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ContentFilter</filter-name>
+    <url-pattern>/login/register.action</url-pattern>
+  </filter-mapping>
+
+
   <!-- ############################################ filter end  ############################################ -->
 
 
@@ -114,6 +128,12 @@
     <servlet-name>SessionServlet</servlet-name>
     <url-pattern>/count/*</url-pattern>
   </servlet-mapping>
+
+
+
+
+
+
 
 </web-app>
 
