@@ -69,4 +69,19 @@ public class OptionalDemo implements Serializable{
 
     }
 
+
+    public void paramTest() {
+        User user = new User();
+        user.setAge(2);
+        user.setName("aaa");
+
+
+    }
+
+    private Boolean isValid(String param) {
+        if (param == null || param.length() <= 0) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -1,0 +1,97 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+        <ns4:MessageHeader xmlns:ns8="http://www.w3.org/2000/09/xmldsig#" xmlns:ns7="http://www.opentravel.org/OTA/2003/05" xmlns:ns6="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:ns5="http://www.w3.org/1999/xlink" xmlns:ns4="http://www.ebxml.org/namespaces/messageHeader">
+            <ns4:From>
+                <ns4:PartyId ns4:type="URI">123123</ns4:PartyId>
+            </ns4:From>
+            <ns4:To>
+                <ns4:PartyId ns4:type="URI">99999</ns4:PartyId>
+            </ns4:To>
+            <ns4:CPAId>67X8</ns4:CPAId>
+            <ns4:ConversationId>12342016-09-13-65269</ns4:ConversationId>
+            <ns4:Service ns4:type="OTA">Air Shopping Service</ns4:Service>
+            <ns4:Action>BargainFinderMaxRQ</ns4:Action>
+            <ns4:MessageData>
+                <ns4:MessageId>mid:20001209-133003-2333@clientofsabre.com</ns4:MessageId>
+                <ns4:Timestamp>2001-02-15T11:15:12Z</ns4:Timestamp>
+            </ns4:MessageData>
+        </ns4:MessageHeader>
+        <ns6:Security xmlns:ns8="http://www.w3.org/2000/09/xmldsig#" xmlns:ns7="http://www.opentravel.org/OTA/2003/05" xmlns:ns6="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:ns5="http://www.w3.org/1999/xlink" xmlns:ns4="http://www.ebxml.org/namespaces/messageHeader">
+            <ns6:BinarySecurityToken>T1RLAQK3yQ3kxqeD93yqNmAgwZWJlV5HtRB839eOvs6F9THXZHZHGRXfAACwcoOQKZQO3YDmr0iGgVSPFiYojs9HtNVlSgfHUE1LeB5l5d33Y90fHhzYrKXg5iANb9PjmtYnNcmOiknR+KYpyNVg8/ImiZwTIKbWG4uRZ/ldhuPHdM02FAF6Ei5EsXIghkpYVMI38vj/a42Ota9oHK0YA5KPGsYENwgF1AfoULBjdvP32eKaxqjbFD/iA+3fPCCv7lSU22ibTJ/dE1mAyyYAt1sFuNvBIquAw5b00ig*</ns6:BinarySecurityToken>
+        </ns6:Security>
+    </soap:Header>
+    <soap:Body>
+        <ns6:OTA_AirLowFareSearchRQ xmlns:ns1="http://www.ebxml.org/namespaces/messageHeader" xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns3="http://www.w3.org/1999/xlink" xmlns:ns4="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:ns6="http://www.opentravel.org/OTA/2003/05" xmlns:ns7="http://www.w3.org/2000/09/xmldsig#" AvailableFlightsOnly="true" ResponseType="OTA" ResponseVersion="3.1.0" Target="Production" Version="3.1.0">
+            <ns6:POS>
+                <ns6:Source PseudoCityCode="67X8"> <!--pcc-->
+                    <ns6:RequestorID Type="1" ID="1">
+                        <ns6:CompanyName Code="TN"/>
+                    </ns6:RequestorID>
+                </ns6:Source>
+            </ns6:POS>
+            <ns6:OriginDestinationInformation>
+                <!--去程信息，出发日期 11:00:00 可获取更多优势资源-->
+                <ns6:DepartureDateTime>2017-08-25T11:00:00</ns6:DepartureDateTime>
+                <ns6:DepartureWindow>00002359</ns6:DepartureWindow>
+                <ns6:OriginLocation LocationCode="BOS"/>
+                <ns6:DestinationLocation LocationCode="SFO"/>
+                <ns6:TPA_Extensions><!--仓等-->
+                    <ns6:CabinPref Cabin="Y" PreferLevel="Preferred"/>
+                </ns6:TPA_Extensions>
+            </ns6:OriginDestinationInformation>
+            <ns6:OriginDestinationInformation>
+                <!--返程信息-->
+                <ns6:DepartureDateTime>2017-08-30T11:00:00</ns6:DepartureDateTime>
+                <ns6:DepartureWindow>00002359</ns6:DepartureWindow>
+                <ns6:OriginLocation LocationCode="SFO"/>
+                <ns6:DestinationLocation LocationCode="BOS"/>
+                <ns6:TPA_Extensions>
+                    <ns6:CabinPref Cabin="Y" PreferLevel="Preferred"/>
+                </ns6:TPA_Extensions>
+            </ns6:OriginDestinationInformation>
+            <ns6:TravelPreferences ValidInterlineTicket="true" MaxStopsQuantity="2">
+                <ns6:FlightTypePref MaxConnections="1"/>
+                <ns6:CabinPref Cabin="Y" PreferLevel="Preferred"/>
+                <ns6:TPA_Extensions>
+                    <ns6:OnlineIndicator Ind="true"/>
+                    <ns6:TripType Value="Return"/>
+                    <!--XOFares参数的作用是指定sabre是否强制返回对应旅客类型的价格信息。如果为true，则强制返回，
+                     如果没有对应旅客类型的价格信息，则此航班组合不返回；
+                    如果为false，同时没有对应旅客类型的价格信息，则sabre会返回成人价格给儿童-->
+                    <!--1 新加坡市场要求XOFares 设定为true，其他市场可以为false-->
+                    <!--2 BFM-RQ的XOFares参数值为true时需修改EAB接口旅客信息参数，BargainFinder的PassengerType增加Force="true"-->
+                    <ns6:XOFares Value="false"/>
+
+                    <ns6:JumpCabinLogic Disabled="true"/> <!--防止跳舱-->
+                    <ns6:KeepSameCabin Enabled="true"/> <!--JumpCabinLogic不能完全避免包含舱等不一致的航班组合返回，需增加KeepSameCabin参数规避此问题-->
+                    <ns6:ExcludeCallDirectCarriers Enabled="true"/>
+                    <ns6:DiversityParameters AdditionalNonStopsNumber="9"><!--在已定查询数量上，多返回9条数据-->
+                        <ns6:Weightings PriceWeight="7" TravelTimeWeight="3"/><!--权重-->
+                    </ns6:DiversityParameters>
+                </ns6:TPA_Extensions>
+            </ns6:TravelPreferences>
+            <ns6:TravelerInfoSummary>
+                <ns6:AirTravelerAvail>
+                    <ns6:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                    <ns6:PassengerTypeQuantity Code="CNN" Quantity="1"/>
+                </ns6:AirTravelerAvail>
+                <ns6:PriceRequestInformation CurrencyCode="CNY" ProcessThruFaresOnly="false">
+                    <ns6:TPA_Extensions>
+                        <ns6:Priority>
+                            <ns6:Price Priority="1"/>
+                            <ns6:DirectFlights Priority="2"/>
+                            <ns6:Time Priority="3"/>
+                            <ns6:Vendor Priority="4"/>
+                        </ns6:Priority>
+                    </ns6:TPA_Extensions>
+                </ns6:PriceRequestInformation>
+            </ns6:TravelerInfoSummary>
+            <ns6:TPA_Extensions>
+                <ns6:IntelliSellTransaction>
+                    <ns6:RequestType Name="200ITINS"/> <!--查询数量-->
+                    <ns6:CompressResponse Value="false"/><!--压缩返回-->
+                </ns6:IntelliSellTransaction>
+            </ns6:TPA_Extensions>
+        </ns6:OTA_AirLowFareSearchRQ>
+    </soap:Body>
+</soap:Envelope>
