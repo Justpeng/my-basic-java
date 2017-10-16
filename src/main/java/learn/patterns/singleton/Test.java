@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 public class Test {
     public static void main(String args[]) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<?> clazz = Just.class;
-        Constructor<?> c = clazz.getDeclaredConstructor(null);
+        Constructor<?> c = clazz.getDeclaredConstructor();
         c.setAccessible(true);
         Just j1 = Just.getInstance();
         Just j2 = (Just) c.newInstance();
@@ -27,8 +27,6 @@ public class Test {
         Constructor<JustEnum> constructor = clz.getConstructor();
         constructor.setAccessible(true);
         constructor.newInstance();
-
-        Object obj = new Object();
     }
 
 

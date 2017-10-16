@@ -1,10 +1,7 @@
 package learn.effective;
 
-import sun.plugin.dom.core.Element;
-
 import java.util.Arrays;
 import java.util.EmptyStackException;
-import java.util.Objects;
 
 /**
  * Description: 对象引用

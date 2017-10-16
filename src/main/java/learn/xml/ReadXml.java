@@ -19,7 +19,6 @@ public class ReadXml {
             SAXReader saxReader = new SAXReader();
             File file = new File("out.xml");
             Document document = saxReader.read(file);
-            Element rootElement = document.getRootElement();
             List<Object> list = document.selectNodes("//bean");
             for (Object n : list) {
                 if(n instanceof Element){
