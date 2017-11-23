@@ -1,15 +1,10 @@
 package learn.jdk8;
 
 
-import org.apache.commons.lang3.text.translate.NumericEntityUnescaper;
 import org.junit.Test;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.io.FileInputStream;
 import java.io.Serializable;
 import java.util.Optional;
-
-import static org.apache.xalan.xsltc.runtime.Operators.names;
 
 /**
  * Description: Optional

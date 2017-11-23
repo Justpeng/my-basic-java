@@ -30,6 +30,7 @@ public final class Complex {
         return new Complex(re - complex.re, im - complex.im);
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

@@ -27,15 +27,18 @@ public final class PhoneNumber implements Comparable<PhoneNumber>{
     }
 
     private static void rangeCheck(int arg, int max, String name) {
-        if(arg<0||arg>max)
+        if (arg < 0 || arg > max) {
             throw new IllegalArgumentException(name + ":" + arg);
+        }
     }
     @Override
     public boolean equals(Object o) {
-        if(o==this)
+        if (o == this) {
             return true;
-        if(!(o instanceof PhoneNumber))
+        }
+        if (!(o instanceof PhoneNumber)) {
             return false;
+        }
         PhoneNumber phoneNumber = (PhoneNumber) o;
         return this.areaCode == phoneNumber.areaCode
                 && this.prefix==phoneNumber.prefix
